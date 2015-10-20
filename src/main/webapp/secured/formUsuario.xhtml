@@ -1,0 +1,120 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form styleClass="form-horizontal">
+		<fieldset>
+			<legend>
+				<h3>
+					<h:outputText value="#{msg['label.usuario']}" />
+					<small> <h:outputText value="#{subtitle}" /></small>
+				</h3>
+			</legend>
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.usuario.nome']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{usuarioBean.usuario.nome}"
+						label="#{msg['label.usuario.nome']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.usuario.email']}" /></label>
+				<div class="controls">
+					<p:inputMask value="#{usuarioBean.usuario.email}" id="email"
+						label="#{msg['label.usuario.email']}" required="true"
+						styleClass="input-large">
+					</p:inputMask>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.usuario.login']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{usuarioBean.usuario.login}"
+						label="#{msg['label.usuario.login']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.usuario.senha']}" /></label>
+				<div class="controls">
+					<p:password id="password" value="#{usuarioBean.usuario.senha}"
+						match="repassword" feedback="true" required="true">
+						<f:validateLength minimum="5" maximum="60" />
+					</p:password>
+
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.usuario.confirma.senha']}" /></label>
+				<div class="controls">
+					<p:password id="repassword" value="#{usuarioBean.usuario.senha}"
+						required="true">
+						<f:validateLength minimum="5" maximum="60" />
+					</p:password>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.usuario.ativo']}" /></label>
+				<div class="controls">
+					<p:selectBooleanButton id="ativo"
+						value="#{usuarioBean.usuario.active}" onLabel="Sim" offLabel="Não" />
+				</div>
+			</div>
+
+
+		</fieldset>
+
+		<div class="control-group">
+			<div class="controls">
+				<p:commandButton value="#{msg['button.salvar']}"
+					action="#{usuarioBean.salvar}" styleClass="btn btn-success"
+					onclick="dlg.show();" oncomplete="dlg.hide();"
+					rendered="#{usuarioBean.usuario!= null}" />
+				<p:button value="#{msg['button.cancelar']}" outcome="listaUsuarios"
+					styleClass="btn" />
+				<p:commandButton value="#{msg['button.excluir']}"
+					onclick="confirmation.show()"
+					rendered="#{usuarioBean.usuario.id != null}" immediate="true"
+					styleClass="btn btn-danger" />
+			</div>
+		</div>
+
+		<p:dialog id="dialog" header="#{msg['dialog.emexecucao.titulo']}"
+			widgetVar="dlg" dynamic="true" modal="true">
+			<h:outputText value="#{msg['dialog.emexecucao.aguarde']}" />
+		</p:dialog>
+
+		<p:confirmDialog id="confirmDialog"
+			message="#{msg['excluir.usuario.confirma']}"
+			header="#{msg['excluir.usuario']}" severity="alert"
+			widgetVar="confirmation">
+			<p:commandButton id="confirm" value="#{msg['confirma.sim']}"
+				update="messages" oncomplete="confirmation.hide()"
+				action="#{usuarioBean.remover}" />
+			<p:commandButton id="decline" value="#{msg['confirma.nao']}"
+				onclick="confirmation.hide()" type="button" />
+		</p:confirmDialog>
+
+		<p:messages id="messages" showDetail="false" autoUpdate="true"
+			closable="true" />
+		<h:inputHidden value="#{usuarioBean.usuario.id}" />
+	</h:form>
+</ui:fragment>

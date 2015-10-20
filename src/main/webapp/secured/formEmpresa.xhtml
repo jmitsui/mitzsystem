@@ -1,0 +1,184 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form styleClass="form-horizontal">
+		<fieldset>
+			<legend>
+				<h3>
+					<h:outputText value="#{msg['label.empresa']}" />
+					<small> <h:outputText value="#{subtitle}" /></small>
+				</h3>
+			</legend>
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.empresa.razaosocial']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{empresaBean.empresa.razaosocial}"
+						label="#{msg['label.empresa.razaosocial']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.empresa.nomefantasia']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{empresaBean.empresa.nomefantasia}"
+						label="#{msg['label.empresa.nomefantasia']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.empresa.cpfcnpj']}" /></label>
+				<div class="controls">
+					<p:inputMask value="#{empresaBean.empresa.cpfcnpj}" id="cpfcnpj"
+						label="#{msg['label.empresa.cpfcnpj']}" required="true"
+						validator="#{validaCPFBean.validaCPF}" styleClass="input-large"
+						mask="999.999.999-99">
+					</p:inputMask>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.empresa.inscricaoestadual']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{empresaBean.empresa.inscricaoestadual}"
+						label="#{msg['label.empresa.inscricaoestadual']}" required="true"
+						styleClass="input-small">
+						<f:convertNumber />
+						<f:validateLongRange minimum="1" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.empresa.endereco']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{empresaBean.empresa.endereco}"
+						label="#{msg['label.empresa.endereco']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.empresa.bairro']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{empresaBean.empresa.bairro}"
+						label="#{msg['label.empresa.bairro']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.empresa.cep']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{empresaBean.empresa.cep}"
+						label="#{msg['label.empresa.cep']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.empresa.telefone']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{empresaBean.empresa.telefone}"
+						label="#{msg['label.empresa.telefone']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.empresa.fax']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{empresaBean.empresa.fax}"
+						label="#{msg['label.empresa.fax']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.empresa.email']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{empresaBean.empresa.email}"
+						label="#{msg['label.empresa.email']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.empresa.homepage']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{empresaBean.empresa.homepage}"
+						label="#{msg['label.empresa.homepage']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+		</fieldset>
+
+		<div class="control-group">
+			<div class="controls">
+				<p:commandButton value="#{msg['button.salvar']}"
+					action="#{empresaBean.salvar}" styleClass="btn btn-success"
+					onclick="dlg.show();" oncomplete="dlg.hide();"
+					rendered="#{empresaBean.empresa!= null}" />
+				<p:button value="#{msg['button.cancelar']}" outcome="listaEmpresas"
+					styleClass="btn" />
+				<p:commandButton value="#{msg['button.excluir']}"
+					onclick="confirmation.show()"
+					rendered="#{empresaBean.empresa.id != null}" immediate="true"
+					styleClass="btn btn-danger" />
+			</div>
+		</div>
+
+		<p:dialog id="dialog" header="#{msg['dialog.emexecucao.titulo']}"
+			widgetVar="dlg" dynamic="true" modal="true">
+			<h:outputText value="#{msg['dialog.emexecucao.aguarde']}" />
+		</p:dialog>
+
+		<p:confirmDialog id="confirmDialog"
+			message="#{msg['excluir.empresa.confirma']}"
+			header="#{msg['excluir.empresa']}" severity="alert"
+			widgetVar="confirmation">
+			<p:commandButton id="confirm" value="#{msg['confirma.sim']}"
+				update="messages" oncomplete="confirmation.hide()"
+				action="#{empresaBean.remover}" />
+			<p:commandButton id="decline" value="#{msg['confirma.nao']}"
+				onclick="confirmation.hide()" type="button" />
+		</p:confirmDialog>
+
+		<p:messages id="messages" showDetail="false" autoUpdate="true"
+			closable="true" />
+		<h:inputHidden value="#{empresaBean.empresa.id}" />
+	</h:form>
+</ui:fragment>

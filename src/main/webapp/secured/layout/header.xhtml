@@ -1,0 +1,57 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="logo">
+		<img src="../resources/img/logo_mitz.png"
+			alt="#{msg['label.logo.mitz']}" title="#{msg['label.logo.mitz']}" />
+	</div>
+
+	<h1 class="title">
+		<h:outputText value="#{msg['app.title']}" />
+	</h1>
+
+	<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:submenu label="#{msg['label.menu.cadastro']}"
+				icon="ui-icon-document">
+				<p:menuitem value="#{msg['label.menu.usuarios']}"
+					outcome="listaUsuarios" />
+				<p:menuitem value="#{msg['label.menu.funcionarios']}"
+					outcome="listaFuncionarios" />
+				<p:menuitem value="#{msg['label.menu.registropontos']}"
+					outcome="listaRegistropontos" />
+				<p:menuitem value="#{msg['label.menu.empresas']}"
+					outcome="listaEmpresas" />
+				<p:menuitem value="#{msg['label.menu.estados']}"
+					outcome="listaEstados" />
+				<p:menuitem value="#{msg['label.menu.cidades']}"
+					outcome="listaCidades" />
+			</p:submenu>
+
+			<p:menuitem value="#{msg['label.menu.registropontos']}"
+				outcome="listaRegistropontos" />
+
+			<p:menuitem value="#{msg['label.menu.mapa']}" outcome="mapa" />
+
+			<p:menuitem value="Logout" action="#{loginBean.doLogout}"
+				icon="ui-icon-close" />
+		</p:menubar>
+	</h:form>
+</ui:fragment>
+
+<!-- 
+			<p:submenu label="File" icon="ui-icon-document">
+				<p:submenu label="New" icon="ui-icon-contact">
+					<p:menuitem value="Project" url="#" />
+					<p:menuitem value="Other" url="#" />
+				</p:submenu>
+				<p:menuitem value="Open" url="#" />
+				<p:separator />
+				<p:menuitem value="Quit" url="#" />
+			</p:submenu>
+ -->

@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="layout/template.xhtml">
+	<ui:define name="pageTitle">
+		<h:outputText value="#{msg['page.title.lista.empresa']}" />
+	</ui:define>
+
+	<ui:define name="content">
+		<div style="border-bottom: 1px solid #E5E5E5;">
+			<h3>
+				<h:outputText value="#{msg['label.empresas']}" />
+				<small> <h:outputText value="#{msg['label.listagem']}" /></small>
+			</h3>
+			<h6>
+				<p:button value="Incluir" id="incluirEmpresa"
+					outcome="incluirEmpresa" icon="ui-icon-plus" />
+			</h6>
+		</div>
+		<h:form>
+			<p:dataTable id="dataTable" var="empresa"
+				value="#{empresaBean.empresas}" paginator="true" rows="5"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column>
+					<f:facet name="header">#</f:facet>
+					<h:outputText value="#{empresa.id}" />
+				</p:column>
+
+				<p:column sortBy="#{empresa.razaosocial}">
+					<f:facet name="header">
+						<h:outputText value="#{msg['label.empresa.razaosocial']}" />
+					</f:facet>
+					<h:link outcome="editarEmpresa" value="#{empresa.razaosocial}"
+						title="#{msg['label.editar']} #{empresa.razaosocial}">
+						<f:param name="id" value="#{empresa.id}" />
+					</h:link>
+				</p:column>
+
+				<p:column sortBy="#{empreas.nomefantasia}">
+					<f:facet name="header">
+						<h:outputText value="#{msg['label.empresa.nomefantasia']}" />
+					</f:facet>
+					<h:outputText value="#{empresa.nomefantasia}" />
+				</p:column>
+
+				<p:column sortBy="#{empresa.cpfcnpj}">
+					<f:facet name="header">
+						<h:outputText value="#{msg['label.empresa.cpfcnpj']}" />
+					</f:facet>
+					<h:outputText value="#{empresa.cpfcnpj}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		<h:messages />
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/secured/layout/template.xhtml">
+	<ui:define name="pageTitle">
+		<h:outputText value="#{msg['page.title.lista.mercadoria']}" />
+	</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{registropontoBean.getLastId}" />
+	</f:metadata>
+
+	<ui:define name="content">
+		<h:form>
+			<h3>Welcome #{loginBean.username}</h3>
+			<br />
+			<p:panelGrid columns="2">
+				<h:outputText value="Nome:" />
+				<h:outputText value="#{registropontoBean.registroponto.funcionario.nome}" />
+
+				<h:outputText value="Entrada:" />
+				<h:outputText value="#{registropontoBean.registroponto.dataentrada}" />
+
+				<h:outputText value="Saída:" />
+				<h:outputText value="#{registropontoBean.registroponto.datasaida}" />
+
+				<h:outputText value="Status:" />
+				<h:outputText value="#{registropontoBean.registroponto.ocorrencia}" />
+			</p:panelGrid>
+			<br />
+			<h:commandLink action="#{loginBean.doLogout}" value="Logout" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

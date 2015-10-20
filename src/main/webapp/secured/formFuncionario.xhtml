@@ -1,0 +1,187 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:form styleClass="form-horizontal">
+		<fieldset>
+			<legend>
+				<h3>
+					<h:outputText value="#{msg['label.funcionario']}" />
+					<small> <h:outputText value="#{subtitle}" /></small>
+				</h3>
+			</legend>
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.nome']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{funcionarioBean.funcionario.nome}"
+						label="#{msg['label.funcionario.nome']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.cpf_cnpj']}" /></label>
+				<div class="controls">
+					<p:inputMask value="#{funcionarioBean.funcionario.cpf_cnpj}" id="cpf_cnpj"
+						label="#{msg['label.funcionario.cpf_cnpj']}" required="true"
+						validator="#{validaCPFBean.validaCPF}"
+						styleClass="input-large" mask="999.999.999-99">
+					</p:inputMask>
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.pis']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{funcionarioBean.funcionario.pis}"
+						label="#{msg['label.funcionario.pis']}" required="true"
+						styleClass="input-small">
+						<f:convertNumber />
+						<f:validateLongRange minimum="1" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.cargo']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{funcionarioBean.funcionario.cargo}"
+						label="#{msg['label.funcionario.cargo']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="50" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.admissao']}" /></label>
+				<div class="controls">
+			        <p:calendar id="admissao" value="#{funcionarioBean.funcionario.admissao}" 
+			        	pattern="dd/MM/yyyy" label="#{msg['label.funcionario.admissao']}" required="true"
+			        	styleClass="input-small" />
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.nascimento']}" /></label>
+				<div class="controls">
+			        <p:calendar id="nascimento" value="#{funcionarioBean.funcionario.nascimento}" 
+			        	pattern="dd/MM/yyyy" label="#{msg['label.funcionario.nascimento']}" required="true"
+			        	styleClass="input-small" />
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.salario']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{funcionarioBean.funcionario.salario}"
+						label="#{msg['label.funcionario.salario']}" required="true"
+						styleClass="input-small">
+						<f:convertNumber minFractionDigits="2" />
+						<f:validateDoubleRange minimum="1" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.endereco']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{funcionarioBean.funcionario.endereco}"
+						label="#{msg['label.funcionario.endereco']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.bairro']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{funcionarioBean.funcionario.bairro}"
+						label="#{msg['label.funcionario.bairro']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.cep']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{funcionarioBean.funcionario.cep}"
+						label="#{msg['label.funcionario.cep']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.telefone']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{funcionarioBean.funcionario.telefone}"
+						label="#{msg['label.funcionario.telefone']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.funcionario.celular']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{funcionarioBean.funcionario.celular}"
+						label="#{msg['label.funcionario.celular']}" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+		</fieldset>
+
+		<div class="control-group">
+			<div class="controls">
+				<p:commandButton value="#{msg['button.salvar']}"
+					action="#{funcionarioBean.salvar}" styleClass="btn btn-success" onclick="dlg.show();" oncomplete="dlg.hide();"
+					rendered="#{funcionarioBean.funcionario!= null}" />
+				<p:button value="#{msg['button.cancelar']}"
+					outcome="listaFuncionarios" styleClass="btn" />
+				<p:commandButton value="#{msg['button.excluir']}"
+					onclick="confirmation.show()"
+					rendered="#{funcionarioBean.funcionario.id != null}" immediate="true"
+					styleClass="btn btn-danger" />
+			</div>
+		</div>
+		
+		<p:dialog id="dialog" header="#{msg['dialog.emexecucao.titulo']}" widgetVar="dlg" dynamic="true" modal="true">  
+	    	<h:outputText value="#{msg['dialog.emexecucao.aguarde']}" />  
+		</p:dialog>
+		
+		<p:confirmDialog id="confirmDialog" message="#{msg['excluir.funcionario.confirma']}"
+			header="#{msg['excluir.funcionario']}" severity="alert" widgetVar="confirmation">  
+	        <p:commandButton id="confirm" value="#{msg['confirma.sim']}" update="messages" 
+	        	oncomplete="confirmation.hide()" action="#{funcionarioBean.remover}" />  
+	        <p:commandButton id="decline" value="#{msg['confirma.nao']}" 
+	        	onclick="confirmation.hide()" type="button" />
+	    </p:confirmDialog>
+	
+		<p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" />
+		<h:inputHidden value="#{funcionarioBean.funcionario.id}" />
+	</h:form>
+</ui:fragment>

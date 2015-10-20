@@ -1,0 +1,62 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ul class="nav nav-list" style="padding-top: 15px;">
+		<li><em><h:outputText value="#{msg['label.mercadorias']}" /></em></li>
+
+		<li class="#{empty param.active || param.active == 'listaMercadorias' ? 'active' : ''}">
+			<h:link outcome="listaMercadorias">
+				<h:outputText value="#{msg['menu.lista']}" escape="false" />
+				<f:param name="active" value="listaMercadorias" />
+            </h:link>
+		</li>
+		<li class="#{param.active == 'incluirMercadorias' ? 'active' : ''}">
+			<h:link outcome="incluirMercadoria">
+				<h:outputText value="#{msg['menu.incluir']}" escape="false" />
+				<f:param name="active" value="incluirMercadorias" />
+			</h:link>
+		</li>
+
+		<li><em><h:outputText value="#{msg['label.funcionarios']}" /></em></li>
+
+		<li class="#{param.active == 'listaFuncionarios' ? 'active' : ''}">
+			<h:link outcome="listaFuncionarios">
+				<h:outputText value="#{msg['menu.lista']}" escape="false" />
+				<f:param name="active" value="listaFuncionarios" />
+            </h:link>
+		</li>
+		<li class="#{param.active == 'incluirFuncionarios' ? 'active' : ''}">
+			<h:link outcome="incluirFuncionario">
+				<h:outputText value="#{msg['menu.incluir']}" escape="false" />
+				<f:param name="active" value="incluirFuncionarios" />
+			</h:link>
+		</li>
+
+		<li><em><h:outputText value="#{msg['label.registroponto']}" /></em></li>
+
+		<li class="#{param.active == 'listaRegistropontos' ? 'active' : ''}">
+			<h:link outcome="listaRegistropontos">
+				<h:outputText value="#{msg['menu.lista']}" escape="false" />
+				<f:param name="active" value="listaRegistropontos" />
+            </h:link>
+		</li>
+		<li class="#{param.active == 'listaRegistropontos' ? 'active' : ''}">
+			<h:link outcome="listaRegistropontos">
+				<h:outputText value="#{msg['menu.incluir']}" escape="false" />
+				<f:param name="active" value="listaRegistropontos" />
+			</h:link>
+		</li>
+
+		<li class="divider"></li>
+		<li class="#{param.active == 'sobre' ? 'active' : ''}">
+			<h:link outcome="sobre">
+				<h:outputText value="#{msg['menu.sobre']}" escape="false" />
+				<f:param name="active" value="sobre" />
+			</h:link>
+		</li>
+	</ul>
+
+</ui:fragment>

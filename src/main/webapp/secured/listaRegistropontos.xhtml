@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="layout/template.xhtml">
+	<ui:define name="pageTitle">
+		<h:outputText value="#{msg['page.title.lista.registroponto']}" />
+	</ui:define>
+
+	<ui:define name="content">
+		<div style="border-bottom: 1px solid #E5E5E5;">
+			<h3>
+				<h:outputText value="#{msg['label.registropontos']}" />
+				<small> <h:outputText value="#{msg['label.listagem']}" /></small>
+			</h3>
+			<h6>
+				<p:button value="Incluir" id="incluirFuncionario"
+					outcome="incluirFuncionario" icon="ui-icon-plus" />
+			</h6>
+		</div>
+		<h:form>
+			<p:dataTable id="dataTable" var="registroponto" sortBy="#{registroponto.id}" sortOrder="descending"
+				value="#{registropontoBean.registropontos}" paginator="true" rows="5"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column sortBy="#{registroponto.id}">
+					<f:facet name="header">#</f:facet>
+					<h:outputText value="#{registroponto.id}" />
+				</p:column>
+
+				<p:column sortBy="#{registroponto.funcionario.nome}">
+					<f:facet name="header">
+						<h:outputText value="#{msg['label.funcionario.nome']}" />
+					</f:facet>
+					<h:outputText value="#{registroponto.funcionario.nome}">
+					</h:outputText>
+				</p:column>
+
+				<p:column sortBy="#{registroponto.dataentrada}">
+					<f:facet name="header">
+						<h:outputText value="#{msg['label.registroponto.dataentrada']}" />
+					</f:facet>
+					<h:outputText value="#{registroponto.dataentrada}" />
+				</p:column>
+
+				<p:column sortBy="#{registroponto.datasaida}">
+					<f:facet name="header">
+						<h:outputText value="#{msg['label.registroponto.datasaida']}" />
+					</f:facet>
+					<h:outputText value="#{registroponto.datasaida}" />
+				</p:column>
+
+				<p:column sortBy="#{registroponto.ocorrencia}">
+					<f:facet name="header">
+						<h:outputText value="#{msg['label.registroponto.status']}" />
+					</f:facet>
+					<h:outputText value="#{registroponto.ocorrencia}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		<h:messages />
+	</ui:define>
+</ui:composition>
+</html>

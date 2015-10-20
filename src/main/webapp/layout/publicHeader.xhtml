@@ -1,0 +1,28 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="logo">
+		<img src="resources/img/logo_mitz.png" alt="#{msg['label.logo.Mitz']}"
+			title="#{msg['label.logo.mitz']}" />
+	</div>
+
+	<h1 class="title">
+		<h:outputText value="#{msg['app.title']}" />
+	</h1>
+
+	<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:menuitem value="Home" outcome="index"
+				icon="ui-icon-home" />
+			<p:menuitem value="Login" outcome="login"
+				icon="ui-icon-unlocked" />
+			<p:menuitem value="Logout" url="http://www.primefaces.org"
+				icon="ui-icon-locked" />
+		</p:menubar>
+	</h:form>
+</ui:fragment>

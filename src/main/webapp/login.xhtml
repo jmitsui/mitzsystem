@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/layout/publicTemplate.xhtml">
+	<ui:define name="pageTitle">
+		<h:outputText value="Teste Login" />
+	</ui:define>
+
+	<ui:define name="content">
+		<legend>
+			<h3>
+				<h:outputText value="#{msg['label.bemvindo']}" />
+				<small> <h:outputText value="#{msg['label.login']}" /></small>
+			</h3>
+		</legend>
+		<h:form id="login-form" styleClass="form-horizontal">
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.usuario.login']}" /></label>
+				<div class="controls">
+					<h:inputText value="#{loginBean.username}"
+						label="#{msg['label.usuario.login']}" required="true"
+						styleClass="input-small">
+						<f:validateLength minimum="5" maximum="60" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="#{msg['label.usuario.senha']}" /></label>
+				<div class="controls">
+					<p:password id="password" value="#{loginBean.password}"
+						required="true" styleClass="input-small" label="#{msg['label.usuario.senha']}">
+						<f:validateLength minimum="5" maximum="60" />
+					</p:password>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<div class="controls">
+					<p:commandButton value="#{msg['button.login']}"
+						action="#{loginBean.doLogin}" styleClass="btn btn-success" />
+				</div>
+			</div>
+		<p:messages id="messages" showDetail="false" autoUpdate="true"
+			closable="true" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
